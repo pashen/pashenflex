@@ -10,7 +10,7 @@ get_header();
         <!-- Profile --><div id = "profile">
 		<div id = "info">
                 <div class = "photo">
-                    <img src = "images/content/photo_red.jpg" height="280" width="280"/>
+					<?php the_author_image(); ?>
                 </div>
 				
                 <div class = "personal-info">
@@ -25,19 +25,25 @@ get_header();
                     </div>
                     <div class = "some-link">
                         <a href="#portfolio" class = "some-link">
-                            <img class="some-link" src="images/content/somelink.png" height="140" width="580"/>
+                            <img class="some-link" src="<?php bloginfo('template_directory') ?>/assets/images/content/somelink.png" height="140" width="580"/>
                             <span>See My Portfolio</span>
                         </a>
                     </div>
                 </div>
         </div><!-- /Info -->
 
+  <!-- Content Inner --><div class = "content-inner">
 
 
-            <!-- Content Inner --><div class = "content-inner">
+
                 <!-- Left Sidebar --><div class = "left-sidebar">
+
+
+
                     <div id = "design-block" class = "block">
+
                         <h2>Design</h2>
+
                         <div class = "block-content">
 
                             <div class = "field roll-with-description hide">
@@ -120,11 +126,7 @@ get_header();
 
                 </div><!-- /Left Sidebar -->
 
-
-
                 <!-- Content --><div class = "content">
-
-
 
                     <div id = "skills" class="block">
 
@@ -195,19 +197,15 @@ get_header();
                     </div>
 
 
-
-                    <h1>Hi, my name is Jeffrey Richards</h1>
+				<?php while (have_posts()) : the_post(); ?>
+                    <h1><?php the_title(); ?></h1>
 
                     <div class = "body">
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus.</p><br/>
-
-                        <p>Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi.</p>
-
+                        <?php the_content() ?>
                     </div>
 
-
-
+				<?php endwhile ?>
                 </div><!-- /Content -->
 
 
@@ -222,7 +220,10 @@ get_header();
 
         </div><!-- /Profile-->
 
+
+        </div><!-- /Profile-->
+
 	</div>
-	
+
 <?php //get_sidebar(); ?>
 <?php get_footer(); ?>
